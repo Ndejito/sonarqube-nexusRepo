@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Git checkout') {
             steps {
-                git 'https://github.com/Ndejito/sonarqube-nexusRepo.git'
+                git branch: 'main', credentialsId: 'GitHub', url: 'https://github.com/Ndejito/sonarqube-nexusRepo.git'
             }
         }
         
