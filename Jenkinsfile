@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Git checkout') {
             steps {
-                git branch: 'main', credentialsId: 'GitHub', url: 'https://github.com/Ndejito/sonarqube-nexusRepo.git'
+                git 'https://github.com/Ndejito/sonarqube-nexusRepo.git'
             }
         }
         
@@ -35,7 +35,7 @@ pipeline {
         }
         stage('deploy to tomcat') {
           steps {
-              deploy adapters: [tomcat9(credentialsId: 'Tomcat', path: '', url: 'http://18.224.66.164:8080/')], contextPath: '**/*.war', war: ''
+              deploy adapters: [tomcat9(credentialsId: 'Tomcat', path: '', url: 'http://18.224.66.164:8080/')], contextPath: 'myapp/', war: '**/*.war'
               
           }
             
