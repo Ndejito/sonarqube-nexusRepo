@@ -1,14 +1,11 @@
 pipeline {
     agent any
+    tools {
+    maven 'Maven' 
+       }
 
     stages {
-        stage('Git checkout') {
-            steps {
-                git 'https://github.com/Ndejito/sonarqube-nexusRepo.git'
-            }
-        }
-        
-        stage('Build with maven') {
+      stage('Build with maven') {
             steps {
                 sh 'cd SampleWebApp && mvn clean install'
             }
